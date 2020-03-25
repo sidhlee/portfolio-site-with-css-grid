@@ -1,0 +1,52 @@
+.intro {
+  // First write Flex Fallback
+  display: flex;
+  color: rgba($white, 0.7); // make the text blend in with bg
+
+  /*
+   @mixin sans-serif($fz, $ls: 0.17em, $c: $dark-gray, $tt: uppercase, $lh: 1)  
+   was called on h2 in base.scss
+   so we need higher specificity to override the color
+   */
+  h2 {
+    color: $white;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 20%;
+      height: 1px;
+      background: rgba($white, 0.5);
+      margin: 1em auto 0;
+    }
+  }
+
+  // After writing flex fallback, write for grid.
+  @supports (display: grid) {
+    // only apply these when () is supported by browser
+    display: grid;
+    /* On mobile, side images are at least 3em wide. 
+      and it will not grow until middle content reaches 30em(480px)*/
+    grid-template-columns: minmax(3em, 1fr) minmax(auto, 30em) minmax(3em, 1fr);
+  }
+}
+
+.intro-middle {
+  background: $dark-blue;
+  padding: 2.5em 2vw; // make LR padding bigger on wider screen
+  text-align: center;
+
+  /* align center for larger screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro-left img,
+.intro-right img {
+  /* sets how img | video should be resized to fit its container */
+  object-fit: cover;
+  min-height: 100%; // cover 100% of its container height
+  min-width: 100%; // cover 100% of its container width
+  display: block; // Fix the bug where on vw > 1084px, images not taking 100% of height (tiny space at the bottom)
+}
