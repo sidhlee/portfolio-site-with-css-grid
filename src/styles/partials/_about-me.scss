@@ -1,0 +1,64 @@
+.about-me {
+  /* 
+    %container {
+      width: 90%;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    */
+  // extending placeholder selector instead of adding <div class="container></div>
+  @extend %container;
+  margin-top: 3em;
+
+  @extend %clearfix; // prevent "My Work" unwrapping inside about-me box;
+}
+
+.about-img {
+  max-height: 25em; // don't let img grow too big;
+  /* 
+  arbitrary 40em (640px) value is O.K.
+  But this happens to fix the problem where "Joe" unwraps from "Portfolio" 
+  too early to the right of the photo.  */
+  @media (min-width: 40em) {
+    float: left;
+    margin-right: 1em;
+  }
+}
+
+/* Write @support first, then move non-grid rules into here */
+.about-title {
+  margin-bottom: 0.25em; // smaller mb
+}
+
+.about-subtitle {
+  margin: 0.5em 0;
+}
+
+/* For about-me section, we're doing grid first and fallback second */
+@supports (display: grid) {
+  // only when browser supports grid
+  .about-me {
+    display: grid; // You can comment this line out when working on the fallback.
+    // [grid-line name]
+    grid-template-columns:
+      [port-start] minmax(6em, 1fr) [name-start] minmax(6em, 1fr)
+      [img-end] 2fr [port-end];
+  }
+
+  .about-img {
+    /* CSS will actually recognize short-forms! */
+    grid-column: port / img;
+    grid-row: 1 / 2;
+  }
+
+  .about-title {
+    grid-column: name / port;
+    grid-row: 1 / 2;
+    align-self: end; // push title down
+  }
+
+  .about-subtitle,
+  .about-text {
+    grid-column: port / port;
+  }
+}

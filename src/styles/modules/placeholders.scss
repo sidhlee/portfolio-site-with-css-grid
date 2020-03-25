@@ -1,0 +1,20 @@
+/* 
+%(Sass placeholder selector) is like sass variable for a block of rules.
+They don't get included in the CSS output, but you can @extend it inside
+other selector rules.
+
+Use % when writing a Sass library where each style rule may or may not be used.
+  */
+%container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 50em;
+}
+
+%clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
