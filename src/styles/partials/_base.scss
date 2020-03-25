@@ -1,0 +1,30 @@
+body {
+  color: $gray;
+  font-family: $ff-s;
+  line-height: 1.6;
+  background: $white;
+  // apply the size of the most used element(<p>) as global size
+  font-size: 0.875rem;
+}
+
+img {
+  max-width: 100%;
+}
+// makes it easier to control things
+h1,
+h2,
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+h1 {
+  color: $accent;
+  line-height: 1;
+  // 16px * 3.125 = 50px
+  font-size: 3.125rem;
+}
+
+h2 {
+  @include sans-serif($fz: 2rem);
+}
