@@ -28,3 +28,8 @@ h1 {
 h2 {
   @include sans-serif($fz: 2rem);
 }
+
+/* figure element have default margins */
+figure {
+  margin: 0;
+}

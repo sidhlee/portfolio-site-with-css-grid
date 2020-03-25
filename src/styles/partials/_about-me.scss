@@ -8,7 +8,8 @@
     */
   // extending placeholder selector instead of adding <div class="container></div>
   @extend %container;
-  margin-top: 3em;
+  margin-top: 5em;
+  margin-bottom: 5em;
 
   @extend %clearfix; // prevent "My Work" unwrapping inside about-me box;
 }

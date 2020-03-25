@@ -1,0 +1,138 @@
+.portfolio {
+  text-align: center;
+  background: $light-gray;
+  padding: 5em 0;
+  h1 {
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.portfolio-items {
+  display: flex;
+  flex-wrap: wrap;
+  // set max-width so that images don't grow too large
+  // especially when filling up the last row.
+  @include container($max-width: 75em);
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden; // just in case
+  flex: 1 1 20rem;
+
+  img {
+    // removes little space at the bottom of images
+    // because img is inline-bottom by default.
+    display: block;
+    width: 100%; // fill up 100% of container
+  }
+
+  figcaption {
+    // make text lay on top of image.
+    position: absolute;
+    top: 100%; // hide on normal state
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(
+      $accent,
+      0.75
+    ); // increased from 0.5 to make text more readable
+    color: $white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    transition: top 250ms ease-in-out;
+  }
+
+  /* :hover on parent! */
+  &:hover figcaption,
+  &:focus figcaption {
+    // when hovered | focused | touched(mobile)
+    top: 0;
+  }
+}
+
+.portfolio-title {
+  color: $white;
+  font-size: 5rem; // will grow with vw
+  /* margin-bottom: auto; inside flex box pushes all the following content to the bottom */
+  margin-bottom: auto;
+}
+
+.portfolio-link {
+  color: $white;
+  font-size: 1.1rem; // little bigger
+  font-size: $fw-b;
+  text-decoration: none;
+  /* spans whole row because parent container is flexed in column direction
+   and flex-box by default, makes its children fully stretched sideways along its axis) */
+  border-bottom: 3px solid $white;
+  /* Solution */
+  align-self: flex-start;
+  // link icon
+  &::after {
+    /* when we import svg as file (as opposed to inline svg) 
+    we don't have many option to style them with css. 
+    So make sure you export them styled as needed */
+    content: url("/images/arrow-white.svg");
+    display: inline-block; // this will put icon next to link AND extend border-bottom;
+    /* need both height & width to show svg element */
+    height: 0.8em;
+    width: 0.8em;
+    margin-left: 0.5em;
+  }
+}
+
+/* After we've done all the fallbacks */
+@supports (display: grid) {
+  .portfolio-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // creates two cols
+  }
+
+  /* When with .featured class, move it to the top row
+    and make it span that whole row */
+  .portfolio-item.featured {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+  }
+
+  /*
+  .portfolio-title {
+    font-size: 10vw;
+    // bigger when parent container has .featured class
+    .featured & {
+      font-size: 20vw;
+    }
+  }
+
+  .portfolio-desc {
+    display: none; // hide by default
+    // only show when parent container has .featured class
+    .featured & {
+      display: block;
+    }
+  }
+  */
+
+  // Refactored from above
+  .portfolio-title {
+    font-size: 10vw;
+  }
+
+  .portfolio-desc {
+    display: none;
+  }
+
+  .featured {
+    .portfolio-title {
+      font-size: 20vw;
+    }
+
+    .portfolio-desc {
+      display: block;
+    }
+  }
+}
