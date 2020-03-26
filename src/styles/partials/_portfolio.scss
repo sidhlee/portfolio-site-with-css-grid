@@ -18,7 +18,12 @@
 .portfolio-item {
   position: relative;
   overflow: hidden; // just in case
-  flex: 1 1 20rem;
+  flex: 1 1 50%;
+
+  &.featured {
+    order: 0;
+    flex-basis: 100%;
+  }
 
   img {
     // removes little space at the bottom of images
@@ -56,9 +61,25 @@
 
 .portfolio-title {
   color: $white;
-  font-size: 5rem; // will grow with vw
+  font-size: 10vw; // will grow with vw
   /* margin-bottom: auto; inside flex box pushes all the following content to the bottom */
   margin-bottom: auto;
+}
+
+/* Hide description by default */
+.portfolio-desc {
+  display: none;
+}
+
+/* when parent container has .featured class, make title bigger & show description */
+.featured {
+  .portfolio-title {
+    font-size: 20vw;
+  }
+
+  .portfolio-desc {
+    display: block;
+  }
 }
 
 .portfolio-link {
@@ -97,42 +118,5 @@
   .portfolio-item.featured {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
-  }
-
-  /*
-  .portfolio-title {
-    font-size: 10vw;
-    // bigger when parent container has .featured class
-    .featured & {
-      font-size: 20vw;
-    }
-  }
-
-  .portfolio-desc {
-    display: none; // hide by default
-    // only show when parent container has .featured class
-    .featured & {
-      display: block;
-    }
-  }
-  */
-
-  // Refactored from above
-  .portfolio-title {
-    font-size: 10vw;
-  }
-
-  .portfolio-desc {
-    display: none;
-  }
-
-  .featured {
-    .portfolio-title {
-      font-size: 20vw;
-    }
-
-    .portfolio-desc {
-      display: block;
-    }
   }
 }
