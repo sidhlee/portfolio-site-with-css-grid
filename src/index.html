@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
   <!-- Navigation ======================== -->
   <nav>
     <ul>
@@ -18,17 +19,26 @@
     </ul>
   </nav>
 
+  <!-- backdrop -->
+  <div class="backdrop"></div>
   <!-- Welcome - cover page ===================== -->
+
   <div class="welcome">
     <!-- we're using absolute positioning on menu toggler so we're including it
-      inside the first section.
-    Also, we're using JS to control side-navbar sliding 
-    so button element makes more sense than link -->
-    <button class="menu-button">
-      <svg x="0px" y="0px" viewBox="0 0 30 17" height="17" width="30">
+                      inside the first section.
+                    Also, we're using JS to control side-navbar sliding 
+                    so button element makes more sense than link -->
+    <button class="nav-toggler">
+      <svg class="menu-button" x="0px" y="0px" viewBox="0 0 30 17" height="17" width="30">
         <rect y="1" class="st0" width="30" height="2" />
         <rect y="7" class="st0" width="30" height="2" />
         <rect y="13" class="st0" width="30" height="2" />
+      </svg>
+      <svg class="close-icon is-open" x="0px" y="0px" viewBox="0 0 30 17" height="40" width="40">
+        <g transform="translate(-15 -15)">
+          <polygon class="st0" points="31.2,23.5 37,29.3 35.8,30.5 30,24.7 24.2,30.5 23,29.3 28.8,23.5 23,17.7 24.2,16.5 30,22.3 
+                    35.8,16.5 37,17.7 	" />
+        </g>
       </svg>
     </button>
     <h1>Welcome to my <span>Portfolio</span></h1>
@@ -56,11 +66,14 @@
     <h2 class="about-subtitle">Designer & Developer</h2>
     <div class="about-text">
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex ut quia nostrum nihil distinctio in, id officiis
-        consequuntur dolore quidem magnam sapiente? Incidunt, provident dolorum porro aut dicta quo at doloremque autem
+        consequuntur dolore quidem magnam sapiente? Incidunt, provident dolorum porro aut dicta quo at doloremque
+        autem
         unde veritatis, aperiam minus enim odio rem amet eaque in et nulla eum.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure cum, amet, vel ipsam libero vero dicta vitae eos
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure cum, amet, vel ipsam libero vero dicta vitae
+        eos
         nemo quia unde esse accusamus inventore, consectetur quaerat dolore animi eum omnis? Veniam eaque distinctio
-        illo officia amet exercitationem facilis quos. Vero, praesentium aliquam? Repudiandae dignissimos veniam cumque
+        illo officia amet exercitationem facilis quos. Vero, praesentium aliquam? Repudiandae dignissimos veniam
+        cumque
         deserunt dolorum distinctio vitae.</p>
     </div>
   </section>
@@ -158,6 +171,9 @@
     </div>
     <p class="copyright">Copyright 2020 Joe Portfolio</p>
   </footer>
+
+
+
 
   <script src="index.js"></script>
 </body>

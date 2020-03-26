@@ -1,63 +1,96 @@
-.menu-button {
+button.nav-toggler {
   position: absolute;
   top: 2em;
   left: 2em;
-  background: transparent;
-  border: 0;
-}
-
-nav ul {
   margin: 0;
   padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-around;
-  // flex-items stretch to fill entire cross-axis
-  // items will default to align-items: flex-start;
-  align-items: stretch;
-  background: $accent;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 15%;
-  /* setting fixed position made nav to go under other elements (it looked like it had opacity) */
-  z-index: 10;
+  background: transparent;
+  border: 0;
+  z-index: 100; // higher than sidebar
 
-  li {
-    border-bottom: 1px solid $dark-blue;
-    text-align: center; // add this to center after align-items: stretch;
+  cursor: pointer;
 
-    /* Flexing doesn't work here because the space b/w border-bottom and the text 
-    has nothing to do with centering <a> inside <li>. You can set its space by 
-    adjusting <a>'s padding value*/
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // background: lightblue;
+  .close-icon {
+    display: none;
+    position: relative;
+    top: -0.5em;
+    left: -0.5em;
+  }
 
-    &:hover {
-      background: rgba($dark-blue, 0.5);
+  &.is-open {
+    .menu-button {
+      display: none;
+    }
+    .close-icon {
+      display: block;
+    }
+  }
+}
+
+nav {
+  ul {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 20%;
+    /* setting fixed position made nav to go under other elements (it looked like it had opacity) */
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-around;
+    // flex-items stretch to fill entire cross-axis
+    // items will default to align-items: flex-start;
+    align-items: stretch;
+    background: $accent;
+
+    transform: translateX(-100%); // slide left!
+    transition: transform 250ms ease-out;
+
+    &.is-open {
+      transform: translateX(0);
     }
 
-    a {
-      @include sans-serif($fz: 4rem, $c: $dark-blue);
-      text-decoration: none;
-      /* make top & bottom padding of each menu item equally divide the viewport height (2 * 4 = 8) 
+    li {
+      border-bottom: 1px solid $dark-blue;
+      &:last-of-type {
+        border-bottom: none;
+      }
+      text-align: center; // add this to center after align-items: stretch;
+
+      /* Flexing doesn't work here because the space b/w border-bottom and the text 
+    has nothing to do with centering <a> inside <li>. You can set its space by 
+    adjusting <a>'s padding value*/
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // background: lightblue;
+
+      &:hover {
+        background: rgba($dark-blue, 0.5);
+      }
+
+      a {
+        @include sans-serif($fz: 4rem, $c: $dark-blue);
+        text-decoration: none;
+        /* make top & bottom padding of each menu item equally divide the viewport height (2 * 4 = 8) 
       and you need to remove line-hight for that*/
-      padding: calc(100vh / 8) 0; // provides much larger area for clicking! don't need horizontal padding with display: block;
-      line-height: 0; // text will have no line height (and the x-axis will sit on the middle of text vertically)
-      /* 
+        padding: calc(100vh / 8) 0; // provides much larger area for clicking! don't need horizontal padding with display: block;
+        line-height: 0; // text will have no line height (and the x-axis will sit on the middle of text vertically)
+        /* 
       Link is inline by default. So the parent container (li) 
       will just be as big as the text inside link even though and the padding we added to the link
       will just expand over li. 
       In order for li to properly contain <a> and have the space between link text and its border-bottom,
       we need to make <a> a block | inline-block element (so that it can have a height)
       */
-      display: block;
-      // background: pink; // to check the dimension
+        display: block;
+        // background: pink; // to check the dimension
+      }
     }
   }
 }
