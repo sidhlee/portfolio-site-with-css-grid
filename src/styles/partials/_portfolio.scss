@@ -111,6 +111,20 @@
   .portfolio-items {
     display: grid;
     grid-template-columns: repeat(2, 1fr); // creates two cols
+
+    @include mq {
+      grid-template-columns: repeat(
+        4,
+        1fr
+      ); // have 4 cols instead of 2 on wider sc
+      .portfolio-title {
+        /* bigger than 2.5rem and smaller than 4rem */
+        font-size: min(max(5vw, 2.5rem), 4rem);
+      }
+      .portfolio-item.featured .portfolio-title {
+        font-size: min(max(10vw, 5rem), 10rem);
+      }
+    }
   }
 
   /* When with .featured class, move it to the top row
