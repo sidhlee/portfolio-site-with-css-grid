@@ -9,6 +9,8 @@ body {
   @include mq {
     font-size: 1.125rem;
   }
+
+  overflow-x: hidden; // don't create x-scroll!
 }
 
 img {

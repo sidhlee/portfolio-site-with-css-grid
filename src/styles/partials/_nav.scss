@@ -12,9 +12,10 @@ button.nav-toggler {
 
   .close-icon {
     display: none;
-    position: relative;
-    top: -0.5em;
-    left: -0.5em;
+    position: fixed; // keep it fixed so that it doesn't get scrolled up with the content
+    // just fixed by tuning view-box and svg height
+    // top: -0.5em;
+    // left: -0.5em;
   }
 
   &.is-open {
@@ -56,10 +57,11 @@ nav {
     }
 
     li {
-      border-bottom: 1px solid $dark-blue;
-      &:last-of-type {
-        border-bottom: none;
+      // Only when it's not the last one!
+      &:not(:last-of-type) {
+        border-bottom: 1px solid $dark-blue;
       }
+
       text-align: center; // add this to center after align-items: stretch;
 
       /* Flexing doesn't work here because the space b/w border-bottom and the text 
