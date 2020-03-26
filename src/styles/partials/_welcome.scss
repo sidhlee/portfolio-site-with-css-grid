@@ -15,10 +15,18 @@
     color: $dark-blue;
     line-height: 2; // space between 'Welcome to my' and 'PORTFOLIO'
     text-align: center;
+    @include mq {
+      font-size: 2.5vw; // make it grow with vw;
+    }
+
     // also this span is specific to only this component
     span {
       @include sans-serif($fz: 5.5rem, $c: $accent);
       display: block;
+
+      @include mq {
+        font-size: 10vw;
+      }
 
       // "O" from "PORTFOLIO" has some extra space to the right
       transform: translateX(0.1em);

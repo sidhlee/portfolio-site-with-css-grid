@@ -8,6 +8,8 @@ A Code-along with comments for [How to create a Website with CSS Grid & Sass](ht
 
 - Sass placeholder selector(`%`) is very handy when you want to `@extend` a `%variable` which holds a block of many css rules.
 
+  - But can cause some issues especially in `@media` and `@supports`, so in general use `@mixin` instead.
+
 - You can write flex box fallback first and write grid inside `@supports (display: grid) {}`.
 
   - or you can start with grid inside `@supports`, then write fallback.

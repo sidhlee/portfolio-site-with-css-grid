@@ -5,6 +5,10 @@ body {
   background: $white;
   // apply the size of the most used element(<p>) as global size
   font-size: 0.875rem;
+
+  @include mq {
+    font-size: 1.125rem;
+  }
 }
 
 img {
@@ -23,10 +27,17 @@ h1 {
   line-height: 1;
   // 16px * 3.125 = 50px
   font-size: 3.125rem;
+
+  @include mq {
+    font-size: 4.25rem;
+  }
 }
 
 h2 {
   @include sans-serif($fz: 2rem);
+  @include mq {
+    font-size: 3.125rem;
+  }
 }
 
 /* figure element have default margins */
