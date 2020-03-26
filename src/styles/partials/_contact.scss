@@ -10,6 +10,32 @@
 form {
   display: flex;
   flex-direction: column;
+
+  @supports (display: grid) {
+    @include mq {
+      display: grid;
+      grid-column-gap: 1em;
+      grid-template-areas:
+        "name      email"
+        "message   message"
+        "   .      btn";
+      .name {
+        grid-area: name;
+      }
+      .email {
+        grid-area: email;
+      }
+      .message {
+        grid-area: message;
+        textarea {
+          height: 10em;
+        }
+      }
+      .btn {
+        grid-area: btn;
+      }
+    }
+  }
 }
 
 label {
@@ -31,6 +57,7 @@ textarea {
   background: lighten($light-gray, 7%);
   border: 1px solid $light-gray;
   border-radius: 3px;
+  resize: vertical; // only allow vertical resizing of textarea (horizontal resizing caused some issues with text-input)
 }
 
 .btn {
