@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; // for menu-button position abs
 
   // this style of h1 is only used in this component
   // so we're nesting it instead of giving it a class.

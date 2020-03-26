@@ -8,9 +8,29 @@
 </head>
 
 <body>
+  <!-- Navigation ======================== -->
+  <nav>
+    <ul>
+      <li><a href="#home">home</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#portfolio">portfolio</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
 
   <!-- Welcome - cover page ===================== -->
   <div class="welcome">
+    <!-- we're using absolute positioning on menu toggler so we're including it
+      inside the first section.
+    Also, we're using JS to control side-navbar sliding 
+    so button element makes more sense than link -->
+    <button class="menu-button">
+      <svg x="0px" y="0px" viewBox="0 0 30 17" height="17" width="30">
+        <rect y="1" class="st0" width="30" height="2" />
+        <rect y="7" class="st0" width="30" height="2" />
+        <rect y="13" class="st0" width="30" height="2" />
+      </svg>
+    </button>
     <h1>Welcome to my <span>Portfolio</span></h1>
   </div>
 
