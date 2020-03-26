@@ -4,6 +4,9 @@ They don't get included in the CSS output, but you can @extend it inside
 other selector rules.
 
 Use % when writing a Sass library where each style rule may or may not be used.
+
+>>> @extend placeholder can cause some errors & issues used in @media and @support
+Stay away from it until further notice :(
   */
 %container {
   width: 90%;

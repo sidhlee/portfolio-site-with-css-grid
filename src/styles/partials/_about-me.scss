@@ -1,17 +1,12 @@
 .about-me {
-  /* 
-    %container {
-      width: 90%;
-      margin: 0 auto;
-      max-width: 1200px;
-    }
-    */
-  // extending placeholder selector instead of adding <div class="container></div>
-  @extend %container;
+  //  @extend %container;
+  @include container;
   margin-top: 5em;
   margin-bottom: 5em;
 
-  @extend %clearfix; // prevent "My Work" unwrapping inside about-me box;
+  // @extend %clearfix;
+  // prevent "My Work" unwrapping inside about-me box;
+  @include clearfix;
 }
 
 .about-img {
