@@ -1,0 +1,50 @@
+.contact {
+  @include container;
+  padding: 5em 0;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 1em;
+  /* label is inline-block by default, so you need to make it block element 
+  for margin to have effect. */
+  display: block;
+  color: $dark-gray;
+}
+
+input,
+textarea {
+  /* Enclosing label element is inline-block. 
+  but this will make label and input take different line*/
+  display: block;
+  padding: 0.75em;
+  font-size: 1.2rem;
+  width: 100%;
+  background: lighten($light-gray, 7%);
+  border: 1px solid $light-gray;
+  border-radius: 3px;
+}
+
+.btn {
+  // previously inheriting 100% from above;
+  width: auto; // Inline Button should ALWAYS take width: auto; (content's width)
+  margin-top: 1em;
+  // auto; will take ALL AVAILABLE SPACE (auto on both sides => center)
+  margin-left: auto;
+  background: $accent;
+  border: none;
+  @include sans-serif($fz: 2rem, $c: $white);
+  padding: 0.5em 1.5em;
+  /* this will make margin-left: auto; to lose effect.
+    We made the parent form element a flex column for ml:auto; to work again. 
+  */
+  display: inline-block;
+}
