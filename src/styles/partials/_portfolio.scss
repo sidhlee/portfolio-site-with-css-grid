@@ -25,7 +25,9 @@
     flex-basis: 100%;
   }
 
-  img {
+  // It's always better to aim for higher specificity
+  // to prevent the rule from spilling over
+  img:first-child {
     // removes little space at the bottom of images
     // because img is inline-bottom by default.
     display: block;
@@ -132,5 +134,144 @@
   .portfolio-item.featured {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
+  }
+}
+
+.portfolio-modal {
+  position: fixed;
+  z-index: 100; // should be larger than menu-toggle
+  // to be able to see the content in the background
+  top: 2em;
+  bottom: 2em;
+  left: 2em;
+  right: 2em;
+  background: white;
+
+  /* Nice trick to create backdrop without div */
+  box-shadow: 0 0 0 3em rgba(black, 0.6); // using spread-radius(expands shadow)
+  overflow-y: scroll; // create scroll-bar for modal. can turn outer scroll bar off with JS
+  overflow-x: hidden;
+
+  display: none; // close modal
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.modal-close {
+  background: white;
+  position: fixed;
+  left: 1em;
+  top: 1em;
+  border: 0; // === none
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(black, 0.5);
+  padding: 5px 0px 0px 2px; // fine tuning svg position within button
+  cursor: pointer;
+}
+
+.portfolio-header {
+  text-align: left;
+  padding: 5em 0;
+  margin-bottom: 2em; // space before main content
+  background-size: cover;
+  background-position: center;
+  .portfolio-title {
+    font-size: min(
+      max(5vw, 2.5rem),
+      4rem
+    ); // we set it to be 20vw when .featured added
+  }
+}
+
+.portfolio-item:nth-of-type(1) .portfolio-header {
+  background-image: url("/images/portfolio-01.jpg");
+}
+
+.portfolio-item:nth-of-type(2) .portfolio-header {
+  background-image: url("/images/portfolio-02.jpg");
+}
+
+.portfolio-title-box {
+  background: rgba($accent, 0.75); // create bg inside title-box
+  padding: 3em;
+  color: white;
+  width: 70%;
+
+  .portfolio-title {
+    /* box width is decided by its content. 
+    makes its ::after line have the same width as the title text */
+    display: inline-block;
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      margin: 0.5em 0;
+      background: white;
+      width: 100%; // line will be as wide as title text width
+    }
+  }
+}
+
+.portfolio-subtitle {
+  font-size: 1rem; // little bigger
+}
+
+.portfolio-content {
+  text-align: left;
+  width: 85%; // give some space on the side
+  margin: 0 auto;
+  padding-bottom: 2em; // give some padding at the bottom!
+}
+
+.portfolio-full-width {
+  // BREAK IMAGE OUT OF CONTAINER TO SPAN 100VW!
+  width: 100vw; // still starts at the left margin of the container
+  max-width: initial; // makes it overflow out of the container
+  /* 
+  create x-margin 50% of container, then pull back 50 % of vw = make it start at 0 vw .
+  But this creates scroll-x. so we added overflow-x: hidden inside .portfolio-modal
+  */
+  margin: 2em calc(50% - 50vw);
+  height: 20vh; // make it landscape-ish, but squashes image
+  object-fit: cover; // bgz for image
+}
+
+/* 
+We used this mixin to apply other responsive rules (e.g. font-size)
+It's good to apply same breakpoint for things to change.
+*/
+@include mq {
+  .portfolio-pull-left {
+    width: 65%;
+    float: left;
+    margin-right: 2em;
+  }
+
+  .portfolio-pull-right {
+    width: 65%;
+    float: right;
+    margin-left: 2em;
+  }
+}
+
+@keyframes modalIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modalOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
