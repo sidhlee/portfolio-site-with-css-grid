@@ -20,3 +20,17 @@ const openNav = () => {
 menuBtnOpen.addEventListener('click', openNav);
 menuBtnClose.addEventListener('click', closeNav);
 backdrop.addEventListener('click', closeNav);
+nav.addEventListener('click', closeNav);
+
+let prevPageYOffset = window.pageYOffset;
+window.onscroll = () => {
+  let currentPageYOffset = window.pageYOffset;
+
+  const scrolledDown = currentPageYOffset > prevPageYOffset;
+  if (scrolledDown) {
+    menuBtnOpen.classList.remove('show');
+  } else {
+    menuBtnOpen.classList.add('show');
+  }
+  prevPageYOffset = currentPageYOffset;
+};
