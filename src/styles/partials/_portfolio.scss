@@ -1,0 +1,126 @@
+.portfolio {
+  text-align: center;
+  background: $light-gray;
+  padding: 5em 0;
+  h1 {
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.portfolio-items {
+  display: flex;
+  flex-wrap: wrap;
+  @include container($max-width: 75em);
+}
+
+.portfolio-item {
+  position: relative;
+  flex: 1 1 50%;
+  overflow: hidden;
+
+  &.featured {
+    order: 0;
+    flex-basis: 100%;
+  }
+
+  // for specificity
+  img:first-child {
+    display: block;
+    width: 100%;
+  }
+
+  figcaption {
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($accent, 0.75);
+    color: $white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    transition: top 0.25s ease-in-out;
+    &:focus-within {
+      top: 0;
+    }
+  }
+
+  &:hover figcaption,
+  &:focus figcaption {
+    top: 0;
+  }
+}
+
+.portfolio-title {
+  color: $white;
+  font-size: 2rem;
+  font-size: min(max(10vw, 2rem), 3rem);
+  margin-bottom: auto; // pushes following elements to the bottom
+}
+
+.portfolio-desc {
+  display: none;
+}
+
+.portfolio-link {
+  color: $white;
+  font-size: 1.1rem;
+  font-size: min(max(4vw, 0.8rem), 1.3rem);
+  font-weight: $fw-b;
+  text-decoration: none;
+  border-bottom: 3px solid $white;
+  align-self: flex-start;
+
+  &::after {
+    content: url('/images/arrow-white.svg');
+    display: inline-block;
+    height: 0.8em;
+    width: 0.8em;
+    margin-left: 0.5em;
+  }
+}
+
+.featured {
+  figcaption {
+    padding: 2em;
+  }
+  .portfolio-title {
+    font-size: 5rem;
+    font-size: min(max(20vw, 5rem), 8rem);
+  }
+  .portfolio-desc {
+    display: block;
+    font-size: min(max(4vw, 0.8rem), 1.2rem);
+  }
+}
+
+@include md {
+  .featured {
+    .portfolio-title {
+      font-size: 7rem;
+    }
+  }
+  .portfolio-title {
+    font-size: 3rem;
+  }
+}
+
+@supports (display: grid) {
+  .portfolio-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @include md {
+      grid-template-columns: repeat(4, 1fr);
+      .portfolio-item.featured .portfolio-title {
+        font-size: min(max(9vw, 5rem), 8rem);
+      }
+    }
+  }
+
+  .portfolio-item.featured {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+  }
+}
