@@ -23,14 +23,22 @@ backdrop.addEventListener('click', closeNav);
 nav.addEventListener('click', closeNav);
 
 let prevPageYOffset = window.pageYOffset;
+let prevScrolledDown = false;
 window.onscroll = () => {
   let currentPageYOffset = window.pageYOffset;
 
   const scrolledDown = currentPageYOffset > prevPageYOffset;
-  if (scrolledDown) {
-    menuBtnOpen.classList.remove('show');
-  } else {
-    menuBtnOpen.classList.add('show');
+  const isScrollDirectionChanged = prevScrolledDown !== scrolledDown;
+
+  if (isScrollDirectionChanged) {
+    console.log('direction changed');
+    if (scrolledDown) {
+      menuBtnOpen.classList.remove('show');
+    } else {
+      menuBtnOpen.classList.add('show');
+    }
   }
+
+  prevScrolledDown = scrolledDown;
   prevPageYOffset = currentPageYOffset;
 };
