@@ -31,7 +31,7 @@ window.onscroll = () => {
   const isScrollDirectionChanged = prevScrolledDown !== scrolledDown;
 
   if (isScrollDirectionChanged) {
-    console.log('direction changed');
+    // console.log('direction changed');
     if (scrolledDown) {
       menuBtnOpen.classList.remove('show');
     } else {
