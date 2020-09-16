@@ -8,7 +8,26 @@
 </head>
 
 <body>
-  <div class="welcome">
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">home</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#portfolio">portfolio</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- welcome (cover page) -->
+  <div class="welcome" id="home">
+    <button class="menu-button">
+      <svg x="0px" y="0px" viewBox="0 0 30 26" height="26" width="30">
+        <rect y="5" width="30" height="3" />
+        <rect y="13" width="30" height="3" />
+        <rect y="21" width="30" height="3" />
+      </svg>
+    </button>
     <h1>Welcome to my<span>Portfolio</span></h1>
   </div>
 
@@ -25,7 +44,8 @@
     </div>
   </section>
 
-  <section class="about-me">
+  <!-- About Me -->
+  <section class="about-me" id="about">
     <img class="about-img" src="images/joe-portfolio.png" alt="A picture of Joe Portfolio">
     <h1 class="about-title">Joe Portfolio</h1>
     <h2 class="about-subtitle">Designer & Developer</h2>
@@ -37,7 +57,8 @@
     </div>
   </section>
 
-  <section class="portfolio">
+  <!-- Portfolio -->
+  <section class="portfolio" id="portfolio">
     <h1>My Work</h1>
 
     <div class="portfolio-items">
@@ -90,7 +111,8 @@
 
   </section>
 
-  <section class="contact">
+  <!-- Contact -->
+  <section class="contact" id="contact">
     <h1>Contact me</h1>
     <form action="">
       <label class="name" for="name">Name:

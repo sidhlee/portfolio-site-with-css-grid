@@ -1,0 +1,35 @@
+nav ul {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  background: $accent;
+  list-style: none;
+  z-index: 100;
+
+  li {
+    & > a {
+      display: block;
+      @include sans-serif($fz: 4rem, $c: $dark-blue, $lh: 0);
+      text-decoration: none;
+      padding: calc(100vh / 8) 0.5em;
+    }
+    &:hover {
+      background: rgba($dark-blue, 0.2);
+    }
+  }
+}
+
+.menu-button {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  background: transparent;
+  border: none;
+}
