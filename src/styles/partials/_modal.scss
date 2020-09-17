@@ -1,0 +1,124 @@
+.portfolio-modal {
+  position: fixed;
+
+  z-index: 500;
+  --padding: 2em;
+  top: var(--padding);
+  bottom: var(--padding);
+  left: var(--padding);
+  right: var(--padding);
+
+  padding-bottom: var(--padding);
+
+  background: $white;
+  box-shadow: 0 0 0 var(--padding) rgba(0, 0, 0, 0.6);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  display: none;
+  opacity: 0;
+
+  &.show {
+    display: block;
+    opacity: 1;
+    animation: fade-in 300ms forwards;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal-close {
+  position: fixed;
+  cursor: pointer;
+  top: 1em;
+  right: 1em;
+  border-radius: 50%;
+  border: none;
+  width: 3em;
+  height: 3em;
+  background: $white;
+
+  padding: 4px 0 0 0px;
+}
+
+@for $i from 1 through 5 {
+  #portfolio-0#{$i} {
+    .portfolio-header {
+      background-image: url('/images/portfolio-0#{$i}.jpg');
+    }
+  }
+}
+
+.portfolio-header {
+  background-size: cover;
+  background-position: center;
+  text-align: left;
+  padding: 5em 0;
+  margin-bottom: 2em;
+
+  .portfolio-title-box {
+    background: rgba($accent, 0.75);
+    padding: 3em;
+    color: $white;
+    width: 70%;
+    min-width: min-content;
+
+    .portfolio-title {
+      font-size: min(max(5vw, 3rem), 4rem);
+      display: inline-block; // pseudo element's width is determined by its parent
+      &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        background: $white;
+        margin: 0.5em 0;
+      }
+    }
+    .portfolio-subtitle {
+      font-size: 1rem;
+    }
+  }
+}
+
+.portfolio-content {
+  text-align: left;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.portfolio-full-width {
+  width: 100vw; // still bound by the container
+  max-width: initial; // make it overflow its container to the right
+  margin: 2em calc(50% - 50vw); // 50% of width - 50% of viewport width
+  height: 20vh; // reduce height but squashes image
+  object-fit: cover; // preserve original ratio and cover the container
+}
+
+@include md {
+  .portfolio-pull-left {
+    width: 45%;
+    float: left;
+    margin-right: 2em;
+  }
+  .portfolio-pull-right {
+    width: 55%;
+    float: right;
+    margin-left: 2em;
+  }
+}
