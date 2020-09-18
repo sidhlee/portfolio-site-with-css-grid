@@ -2,6 +2,8 @@
 
 A Code-along with comments for [How to create a Website with CSS Grid & Sass](https://youtu.be/dRuMoGNcJfw) by Kevin Powell.
 
+https://toypiano.github.io/portfolio-site-with-css-grid/
+
 ## Memo
 
 - Think of CSS grid as a different starting point(grid line) for contents, rather than dividing the screen into content areas. This way, it's easier to create more modern layout where components are layered / overlap on top of each other.
