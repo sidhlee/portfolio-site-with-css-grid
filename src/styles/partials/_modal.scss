@@ -21,8 +21,8 @@
 
   &.show {
     display: block;
-    opacity: 1;
-    animation: fade-in 300ms forwards;
+    // this will NOT be able to override inline style set in the script!
+    // animation: fade-in 300ms forwards;
   }
 }
 

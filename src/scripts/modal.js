@@ -11,12 +11,13 @@ portfolioItems.addEventListener('click', (e) => {
 
   const openModal = () => {
     modal.classList.add('show');
+    modal.style.animation = 'fade-in 300ms forwards';
 
     document.body.style.overflowY = 'hidden'; // prevent outer page scroll
   };
   const closeModal = () => {
     modal.classList.remove('show');
-
+    modal.removeEventListener('animationend', closeModal);
     document.body.style.overflowY = 'scroll';
   };
 
@@ -28,5 +29,6 @@ portfolioItems.addEventListener('click', (e) => {
   };
 
   modalCloseButton.addEventListener('click', fadeOut);
+
   openModal();
 });
