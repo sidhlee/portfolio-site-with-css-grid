@@ -14,7 +14,7 @@
     font-weight: $fw-n;
     color: $dark-blue;
     span {
-      @include sans-serif($fz: 5.5rem, $c: $accent);
+      @include sans-serif($fz: 5rem, $c: $accent, $ls: 8px);
       display: block;
       transform: translateX(0.1em);
       @include md {
