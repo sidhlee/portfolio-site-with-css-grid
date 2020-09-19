@@ -37,6 +37,7 @@ portfolioItems.addEventListener('click', (e) => {
   window.addEventListener('keydown', (e) => {
     // console.log(e.code);
     if (e.code === 'Escape') {
+      // e.keycode is deprecated. use e.code!
       fadeOut();
     }
   });
