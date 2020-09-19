@@ -1,17 +1,22 @@
 .portfolio-modal {
   position: fixed;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 700px;
+  padding-bottom: 5em;
 
   z-index: 500;
   --padding: 2em;
-  top: var(--padding);
-  bottom: var(--padding);
-  left: var(--padding);
-  right: var(--padding);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  padding-bottom: var(--padding);
+  // padding-bottom: var(--padding);
 
   background: $white;
-  box-shadow: 0 0 0 var(--padding) rgba(0, 0, 0, 0.6);
+  // box-shadow: 0 0 0 var(--padding) rgba(0, 0, 0, 0.6);
 
   overflow-y: scroll;
   overflow-x: hidden;
@@ -23,6 +28,20 @@
     display: block;
     // this will NOT be able to override inline style set in the script!
     // animation: fade-in 300ms forwards;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 400;
+  display: none;
+  &.show {
+    display: block;
   }
 }
 
@@ -112,13 +131,15 @@
 
 @include md {
   .portfolio-pull-left {
-    width: 45%;
+    width: 60%;
     float: left;
     margin-right: 2em;
   }
   .portfolio-pull-right {
-    width: 55%;
+    width: 30%;
+
     float: right;
     margin-left: 2em;
+    margin-top: 1em;
   }
 }

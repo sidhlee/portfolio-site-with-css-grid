@@ -34,6 +34,10 @@
     grid-column: title / about-end;
     grid-row: 1 / 2;
     align-self: end;
+    margin-bottom: 0.25em;
+    @include md {
+      grid-column: img-end / about-end;
+    }
   }
   .about-subtitle,
   .about-text {

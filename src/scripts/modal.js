@@ -7,16 +7,19 @@ portfolioItems.addEventListener('click', (e) => {
   if (!portfolioLink) return;
 
   const modal = portfolioLink.parentNode.nextElementSibling;
+  const modalBackdrop = modal.nextElementSibling;
   const modalCloseButton = modal.querySelector('.modal-close');
 
   const openModal = () => {
     modal.classList.add('show');
+    modalBackdrop.classList.add('show');
     modal.style.animation = 'fade-in 300ms forwards';
 
     document.body.style.overflowY = 'hidden'; // prevent outer page scroll
   };
   const closeModal = () => {
     modal.classList.remove('show');
+    modalBackdrop.classList.remove('show');
     modal.removeEventListener('animationend', closeModal);
     document.body.style.overflowY = 'scroll';
   };
