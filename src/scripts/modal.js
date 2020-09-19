@@ -32,6 +32,14 @@ portfolioItems.addEventListener('click', (e) => {
   };
 
   modalCloseButton.addEventListener('click', fadeOut);
+  modalBackdrop.addEventListener('click', fadeOut);
+
+  window.addEventListener('keydown', (e) => {
+    // console.log(e.code);
+    if (e.code === 'Escape') {
+      fadeOut();
+    }
+  });
 
   openModal();
 });
